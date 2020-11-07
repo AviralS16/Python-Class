@@ -1,0 +1,99 @@
+import datetime
+import time
+from datetime import timedelta
+
+class Person:
+    """
+    This is a person class
+    """
+
+    age = 10
+
+    def greet(self):
+        print("Hello")
+
+# creating a new object of Person
+Aviral = Person()
+
+
+# printing out docstring
+print(Person.__doc__)
+
+# print member function greet
+# prints address of Person's greet function
+print(Person.greet)
+
+# print object using function greet
+# prints address of Aviral (object) using greet
+print(Aviral.greet)
+
+# calling object's greet() method
+Aviral.greet()
+
+class Dog:
+    tricks = []
+
+    # constructor, automatic generator
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.tricks = []
+
+    # member function ShowDog
+    def ShowDog(self):
+        print("I am", self.name)
+        print(self.tricks)
+
+    # member function AddTrick
+    def AddTrick(self,trick):
+        self.tricks.append(trick)
+
+def main():
+    fiddo = Dog("Fiddo", 12)
+    fiddo.AddTrick("Jump")
+
+    buddy = Dog("Buddy", 5)
+    buddy.AddTrick("Roll over")
+
+    fiddo.ShowDog()
+    buddy.ShowDog()
+
+main()
+
+datetime_object = datetime.datetime.now()
+print(datetime_object)
+
+datetime_object = datetime.date.today()
+print(datetime_object)
+
+date  = datetime.date(2019, 4, 13)
+print(date)
+
+today = date.today()
+print("Current year:", today.year)
+print("Current month:", today.month)
+print("Current day:", today.day)
+
+seconds = time.time()
+print("Seconds since the beginning of the year of 1970 (also called epoch) =", seconds)
+
+
+epochSeconds = 1604779422.7038236
+local_time = time.ctime(epochSeconds)
+print("Local Time", local_time)
+
+# sleep - timer/countdown
+print("This is printed immediately")
+time.sleep(10)
+print("This is printed after 20 seconds")
+
+# calculating time of getting input
+start = time.time()
+choice_input = input("Enter something: ")
+elapsed_time = time.time() - start
+print("It took you " + str(elapsed_time) + " seconds to enter something")
+
+# gets parameters and converts into seconds
+total = timedelta(days = 5, hours = 30, seconds = 546, microseconds = 69419928493)
+print("Total seconds =", total.total_seconds())
+
