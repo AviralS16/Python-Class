@@ -8,12 +8,12 @@ from datetime import timedelta
 
 
 GUI = tk.Tk()
-GUI.geometry("800x400")
+GUI.geometry("800x700")
 GUI.resizable(False, False)
 GUI.title("Speed Typing Test")
 # GUI.configure(bg = "orange")
 
-GUI = tk.Text(GUI, height=50, width=60)
+GUI = tk.Text(GUI, height=70, width=60)
 GUI.pack()
 GUI.insert(tk.END, "This is a speed typing test. ")
 GUI.insert(tk.END, "To play, copy the sentence \ngiven.\n")
@@ -95,11 +95,12 @@ GUI.insert(tk.END, " \nGross WPM: " + str(Gross_WPM_1))
 GUI.insert(tk.END, " \nNet WPM: " + str(Net_WPM_1))
 GUI.insert(tk.END, " \nAccuracy: " + str(Accuracy_1))
 GUI.insert(tk.END, " \nErrors made: " + str(errors_1))
+GUI.insert(tk.END, " \nError Rate: " + str(error_rate) + " errors per minute.")
 
 # A few days after he applief for the program, ge received an gmail saying he made the tean.
 # Soom after sunset on a summet night, they sat arpund the bright campfire, and gazed at the brilloant meteor shower.
 # Bhutam has the higheat average elevation in teh world, whilw the Maldives has the lowest average elevatiom in the wprld.
-
+# It is thought that Moumt Everest, on the border of China and Nepal, is the tallest mountain. However, Mauna Kea, in Hawaii, is the tallest, since it has a lot of height under sea level.
 
 
 
@@ -187,7 +188,7 @@ GUI.insert(tk.END, " \nGross WPM: " + str(Gross_WPM_2))
 GUI.insert(tk.END, " \nNet WPM: " + str(Net_WPM_2))
 GUI.insert(tk.END, " \nAccuracy: " + str(Accuracy_2))
 GUI.insert(tk.END, " \nErrors made: " + str(errors_2))
-
+GUI.insert(tk.END, " \nError Rate: " + str(error_rate) + " errors per minute.")
 
 
 
@@ -270,11 +271,92 @@ GUI.insert(tk.END, " \nGross WPM: " + str(Gross_WPM_3))
 GUI.insert(tk.END, " \nNet WPM: " + str(Net_WPM_3))
 GUI.insert(tk.END, " \nAccuracy: " + str(Accuracy_3))
 GUI.insert(tk.END, " \nErrors made: " + str(errors_3))
+GUI.insert(tk.END, " \nError Rate: " + str(error_rate) + " errors per minute.")
 
 
 
 
 
+# Fourth Sentence
+
+
+
+# Ready
+Ready = simpledialog.askstring(title="Ready ",
+                                prompt="Confirm that you are ready by typing in this prompt. The second you answer this you will have a 5 second break before you start. After 5 seconds the game will start. ")
+time.sleep(5)
+
+# Fourth sentence
+Fourth_sentence = "It is thought that Mount Everest, on the border of China and Nepal, is the tallest mountain. However, Mauna Kea, in Hawaii, is the tallest, since it has a lot of height under sea level."
+start_4 = time.time()
+Fourth_Typing_Input = simpledialog.askstring(title=" Fourth Speed Typing Test Sentence: ",
+                                            prompt= Fourth_sentence) # has 185 characters, so 37 "words"
+
+ 
+
+
+
+# Gross WPM 4
+elapsed_time_4 = round(time.time() - start_4, 2)
+elapsed_time_4_in_min = round(elapsed_time_4 / 60, 2)
+Gross_WPM_4 = round(37 / elapsed_time_4_in_min)
+
+print("Elapsed time in minutes: " + str(elapsed_time_4_in_min))
+print("Elapsed time in seconds: " + str(elapsed_time_4))
+
+print("Gross WPM: " + str(Gross_WPM_4))
+
+
+# Net WPM 4
+Fourth_sentence_list = list(Fourth_sentence)
+Fourth_Typing_Input_List = list(Fourth_Typing_Input)
+errors_4 = 0
+
+num_of_characters_4 = len(Fourth_sentence)
+num_of_characters_typed_4 = len(Fourth_Typing_Input)
+
+if num_of_characters_4 > num_of_characters_typed_4:
+    num_of_char_for_test = num_of_characters_typed_4
+    less_characters = num_of_characters_4 - num_of_characters_typed_4
+    errors_4 += less_characters
+else:
+    num_of_char_for_test = num_of_characters_4
+    extra_characters = num_of_characters_typed_4 - num_of_characters_4
+    errors_4 += extra_characters
+
+for elem in range(num_of_char_for_test):
+    list_num_4 = Fourth_Typing_Input_List[elem]
+    fixed_list_num_4 = Fourth_sentence_list[elem]
+    
+    if list_num_4 == fixed_list_num_4:
+        continue
+    else:
+        errors_4 += 1
+
+print("Errors made: " + str(errors_4))
+error_rate = errors_4 / elapsed_time_4_in_min
+Net_WPM_4 = round(Gross_WPM_4 - error_rate)
+
+
+print("Net WPM: " + str(Net_WPM_4))
+
+
+# Accuracy
+
+correct_characters_4 = num_of_characters_typed_4 - errors_4
+
+Accuracy_4 = str(round((correct_characters_4/num_of_characters_typed_4) * 100)) + "%"
+print("Accuracy: " + str(Accuracy_4))
+
+# Printing results on GUI
+
+GUI.insert(tk.END, " \n Third Sentence Results: ---------------------->")
+GUI.insert(tk.END, " \nYou took " + str(elapsed_time_4) + " seconds, which is " + str(elapsed_time_4_in_min) + " of a minute.   ")
+GUI.insert(tk.END, " \nGross WPM: " + str(Gross_WPM_4))
+GUI.insert(tk.END, " \nNet WPM: " + str(Net_WPM_4))
+GUI.insert(tk.END, " \nAccuracy: " + str(Accuracy_4))
+GUI.insert(tk.END, " \nErrors made: " + str(errors_4))
+GUI.insert(tk.END, " \nError Rate: " + str(error_rate) + " errors per minute.")
 
 
 GUI.mainloop()
