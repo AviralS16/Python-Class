@@ -1,0 +1,280 @@
+import tkinter as tk
+from tkinter import simpledialog
+from tkinter import *
+import datetime
+import time
+from datetime import timedelta
+
+
+
+GUI = tk.Tk()
+GUI.geometry("800x400")
+GUI.resizable(False, False)
+GUI.title("Speed Typing Test")
+# GUI.configure(bg = "orange")
+
+GUI = tk.Text(GUI, height=50, width=60)
+GUI.pack()
+GUI.insert(tk.END, "This is a speed typing test. ")
+GUI.insert(tk.END, "To play, copy the sentence \ngiven.\n")
+
+
+
+# Ready
+Ready = simpledialog.askstring(title="Ready ",
+                                prompt="Confirm that you are ready by typing in this prompt. The second you answer this you will have a 5 second break before you start. After 5 seconds the game will start. ")
+time.sleep(5)
+
+# First sentence
+First_sentence = "A few days after he applied for the program, he received an email saying he made the team."
+start_1 = time.time()
+First_Typing_Input = simpledialog.askstring(title=" First Speed Typing Test Sentence: ",
+                                            prompt= First_sentence) # has 90 characters, so 18 "words"
+
+ 
+
+
+
+# Gross WPM 1
+elapsed_time_1 = round(time.time() - start_1, 2)
+elapsed_time_1_in_min = round(elapsed_time_1 / 60, 2)
+Gross_WPM_1 = round(18 / elapsed_time_1_in_min)
+
+print("Elapsed time in minutes: " + str(elapsed_time_1_in_min))
+print("Elapsed time in seconds: " + str(elapsed_time_1))
+
+print("Gross WPM: " + str(Gross_WPM_1))
+
+
+# Net WPM 1
+First_sentence_list = list(First_sentence)
+First_Typing_Input_List = list(First_Typing_Input)
+errors_1 = 0
+
+num_of_characters_1 = len(First_sentence)
+num_of_characters_typed_1 = len(First_Typing_Input)
+
+if num_of_characters_1 > num_of_characters_typed_1:
+    num_of_char_for_test = num_of_characters_typed_1
+    less_characters = num_of_characters_1 - num_of_characters_typed_1
+    errors_1 += less_characters
+else:
+    num_of_char_for_test = num_of_characters_1
+    extra_characters = num_of_characters_typed_1 - num_of_characters_1
+    errors_1 += extra_characters
+
+for elem in range(num_of_char_for_test):
+    list_num_1 = First_Typing_Input_List[elem]
+    fixed_list_num_1 = First_sentence_list[elem]
+    
+    if list_num_1 == fixed_list_num_1:
+        continue
+    else:
+        errors_1 += 1
+
+print("Errors made: " + str(errors_1))
+error_rate = errors_1 / elapsed_time_1_in_min
+Net_WPM_1 = round(Gross_WPM_1 - error_rate)
+
+
+print("Net WPM: " + str(Net_WPM_1))
+
+
+# Accuracy
+
+correct_characters_1 = num_of_characters_typed_1 - errors_1
+
+Accuracy_1 = str(round((correct_characters_1/num_of_characters_typed_1) * 100)) + "%"
+print("Accuracy: " + str(Accuracy_1))
+
+# Printing results on GUI
+
+GUI.insert(tk.END, " \n First Sentence Results: ---------------------->")
+GUI.insert(tk.END, " \nYou took " + str(elapsed_time_1) + " seconds, which is " + str(elapsed_time_1_in_min) + " of a minute.   ")
+GUI.insert(tk.END, " \nGross WPM: " + str(Gross_WPM_1))
+GUI.insert(tk.END, " \nNet WPM: " + str(Net_WPM_1))
+GUI.insert(tk.END, " \nAccuracy: " + str(Accuracy_1))
+GUI.insert(tk.END, " \nErrors made: " + str(errors_1))
+
+# A few days after he applief for the program, ge received an gmail saying he made the tean.
+# Soom after sunset on a summet night, they sat arpund the bright campfire, and gazed at the brilloant meteor shower.
+# Bhutam has the higheat average elevation in teh world, whilw the Maldives has the lowest average elevatiom in the wprld.
+
+
+
+
+
+# Second Sentence
+
+
+
+# Ready
+Ready = simpledialog.askstring(title="Ready ",
+                                prompt="Confirm that you are ready by typing in this prompt. The second you answer this you will have a 5 second break before you start. After 5 seconds the game will start. ")
+time.sleep(5)
+
+
+
+
+
+# Second sentence
+Second_sentence = "Soon after sunset on a summer night, they sat around the bright campfire, and gazed at the brilliant meteor shower."
+start_2 = time.time()
+Second_Typing_Input = simpledialog.askstring(title=" Second Speed Typing Test Sentence: ",
+                                            prompt= Second_sentence) # has 115 characters, so 23 "words"
+
+ 
+
+
+
+# Gross WPM 2
+elapsed_time_2 = round(time.time() - start_2, 2)
+elapsed_time_2_in_min = round(elapsed_time_2 / 60, 2)
+Gross_WPM_2 = round(23 / elapsed_time_2_in_min)
+
+print("Elapsed time in minutes: " + str(elapsed_time_2_in_min))
+print("Elapsed time in seconds: " + str(elapsed_time_2))
+
+print("Gross WPM: " + str(Gross_WPM_2))
+
+
+# Net WPM 2
+Second_sentence_list = list(Second_sentence)
+Second_Typing_Input_List = list(Second_Typing_Input)
+errors_2 = 0
+
+num_of_characters_2 = len(Second_sentence)
+num_of_characters_typed_2 = len(Second_Typing_Input)
+
+if num_of_characters_2 > num_of_characters_typed_2:
+    num_of_char_for_test = num_of_characters_typed_2
+    less_characters = num_of_characters_2 - num_of_characters_typed_2
+    errors_2 += less_characters
+else:
+    num_of_char_for_test = num_of_characters_2
+    extra_characters = num_of_characters_typed_2 - num_of_characters_2
+    errors_2 += extra_characters
+
+for elem in range(num_of_char_for_test):
+    list_num_2 = Second_Typing_Input_List[elem]
+    fixed_list_num_2 = Second_sentence_list[elem]
+    
+    if list_num_2 == fixed_list_num_2:
+        continue
+    else:
+        errors_2 += 1
+
+print("Errors made: " + str(errors_2))
+error_rate = errors_2 / elapsed_time_2_in_min
+Net_WPM_2 = round(Gross_WPM_2 - error_rate)
+
+
+print("Net WPM: " + str(Net_WPM_2))
+
+
+# Accuracy
+
+correct_characters_2 = num_of_characters_typed_2 - errors_2
+
+Accuracy_2 = str(round((correct_characters_2/num_of_characters_typed_2) * 100)) + "%"
+print("Accuracy: " + str(Accuracy_2))
+
+# Printing results on GUI
+
+GUI.insert(tk.END, " \n Second Sentence Results: ---------------------->")
+GUI.insert(tk.END, " \nYou took " + str(elapsed_time_2) + " seconds, which is " + str(elapsed_time_2_in_min) + " of a minute.   ")
+GUI.insert(tk.END, " \nGross WPM: " + str(Gross_WPM_2))
+GUI.insert(tk.END, " \nNet WPM: " + str(Net_WPM_2))
+GUI.insert(tk.END, " \nAccuracy: " + str(Accuracy_2))
+GUI.insert(tk.END, " \nErrors made: " + str(errors_2))
+
+
+
+
+# Third Sentence
+
+
+
+# Ready
+Ready = simpledialog.askstring(title="Ready ",
+                                prompt="Confirm that you are ready by typing in this prompt. The second you answer this you will have a 5 second break before you start. After 5 seconds the game will start. ")
+time.sleep(5)
+
+# Third sentence
+Third_sentence = "Bhutan has the highest average elevation in the world, while the Maldives has the lowest average elevation in the world."
+start_3 = time.time()
+Third_Typing_Input = simpledialog.askstring(title=" Third Speed Typing Test Sentence: ",
+                                            prompt= Third_sentence) # has 120 characters, so 24 "words"
+
+ 
+
+
+
+# Gross WPM 3
+elapsed_time_3 = round(time.time() - start_3, 2)
+elapsed_time_3_in_min = round(elapsed_time_3 / 60, 2)
+Gross_WPM_3 = round(24 / elapsed_time_3_in_min)
+
+print("Elapsed time in minutes: " + str(elapsed_time_3_in_min))
+print("Elapsed time in seconds: " + str(elapsed_time_3))
+
+print("Gross WPM: " + str(Gross_WPM_3))
+
+
+# Net WPM 3
+Third_sentence_list = list(Third_sentence)
+Third_Typing_Input_List = list(Third_Typing_Input)
+errors_3 = 0
+
+num_of_characters_3 = len(Third_sentence)
+num_of_characters_typed_3 = len(Third_Typing_Input)
+
+if num_of_characters_3 > num_of_characters_typed_3:
+    num_of_char_for_test = num_of_characters_typed_3
+    less_characters = num_of_characters_3 - num_of_characters_typed_3
+    errors_3 += less_characters
+else:
+    num_of_char_for_test = num_of_characters_3
+    extra_characters = num_of_characters_typed_3 - num_of_characters_3
+    errors_3 += extra_characters
+
+for elem in range(num_of_char_for_test):
+    list_num_3 = Third_Typing_Input_List[elem]
+    fixed_list_num_3 = Third_sentence_list[elem]
+    
+    if list_num_3 == fixed_list_num_3:
+        continue
+    else:
+        errors_3 += 1
+
+print("Errors made: " + str(errors_3))
+error_rate = errors_3 / elapsed_time_3_in_min
+Net_WPM_3 = round(Gross_WPM_3 - error_rate)
+
+
+print("Net WPM: " + str(Net_WPM_3))
+
+
+# Accuracy
+
+correct_characters_3 = num_of_characters_typed_3 - errors_3
+
+Accuracy_3 = str(round((correct_characters_3/num_of_characters_typed_3) * 100)) + "%"
+print("Accuracy: " + str(Accuracy_3))
+
+# Printing results on GUI
+
+GUI.insert(tk.END, " \n Third Sentence Results: ---------------------->")
+GUI.insert(tk.END, " \nYou took " + str(elapsed_time_3) + " seconds, which is " + str(elapsed_time_3_in_min) + " of a minute.   ")
+GUI.insert(tk.END, " \nGross WPM: " + str(Gross_WPM_3))
+GUI.insert(tk.END, " \nNet WPM: " + str(Net_WPM_3))
+GUI.insert(tk.END, " \nAccuracy: " + str(Accuracy_3))
+GUI.insert(tk.END, " \nErrors made: " + str(errors_3))
+
+
+
+
+
+
+
+GUI.mainloop()
